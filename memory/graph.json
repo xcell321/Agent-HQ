@@ -1,0 +1,41 @@
+{
+  "generated_by": "reviewer-harness",
+  "nodes": [
+    {
+      "id": "decisions",
+      "title": "Decisions",
+      "file": "decisions.md",
+      "tags": []
+    },
+    {
+      "id": "project",
+      "title": "Project",
+      "file": "project.md",
+      "tags": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "decisions",
+      "to": "project",
+      "type": "link",
+      "tag": "EXTRACTED"
+    },
+    {
+      "from": "project",
+      "to": "decisions",
+      "type": "link",
+      "tag": "EXTRACTED"
+    }
+  ],
+  "dangling": [],
+  "communities": [
+    {
+      "id": "decisions",
+      "members": [
+        "decisions",
+        "project"
+      ]
+    }
+  ]
+}
