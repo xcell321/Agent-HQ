@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { OfficeData } from "@/lib/office-types";
 import OfficeScene from "./OfficeScene";
 import { ActivityFeed, AgentList, ProviderBar, UsagePanel } from "./panels";
@@ -11,14 +11,23 @@ import { ActivityFeed, AgentList, ProviderBar, UsagePanel } from "./panels";
 export default function OfficeDashboard({
   data,
   mode,
+  onDecide,
 }: {
   data: OfficeData;
   mode: "preview" | "demo" | "live";
+  onDecide?: (id: string, ok: boolean) => void;
 }) {
   const [approvals, setApprovals] = useState(data.approvals);
   const [decided, setDecided] = useState<string | null>(null);
 
+  // In live mode the parent refetches on Realtime events — keep the strip
+  // in sync with what the database actually says is still pending.
+  useEffect(() => {
+    if (mode === "live") setApprovals(data.approvals);
+  }, [data.approvals, mode]);
+
   function decide(id: string, ok: boolean, title: string) {
+    if (mode === "live") onDecide?.(id, ok);
     setApprovals((prev) => prev.filter((a) => a.id !== id));
     setDecided(
       mode === "live"

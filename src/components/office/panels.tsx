@@ -17,6 +17,9 @@ export function AgentList({ agents }: { agents: Agent[] }) {
     <section className={panel}>
       <h2 className={panelTitle}>Agents</h2>
       <ul className="mt-4 space-y-4">
+        {agents.length === 0 && (
+          <li className="text-xs text-neutral-500">No agents yet — they appear here when your PC reporter or an API agent reports in.</li>
+        )}
         {agents.map((a) => (
           <li key={a.id} className="flex items-start gap-3">
             <span
@@ -54,6 +57,9 @@ export function ActivityFeed({ items }: { items: ActivityItem[] }) {
     <section className={panel}>
       <h2 className={panelTitle}>Live activity</h2>
       <ul className="mt-4 space-y-3.5">
+        {items.length === 0 && (
+          <li className="text-xs text-neutral-500">No activity yet — when your reporter or an agent does something, it shows up here.</li>
+        )}
         {items.map((it) => (
           <li key={it.id} className="text-sm">
             <p className="leading-5 text-neutral-300">
@@ -75,6 +81,9 @@ export function UsagePanel({ usage }: { usage: ProviderUsage[] }) {
     <section className={panel}>
       <h2 className={panelTitle}>Token usage — per API</h2>
       <div className="mt-4 space-y-4">
+        {usage.length === 0 && (
+          <p className="text-xs text-neutral-500">No API usage in the last 24h yet.</p>
+        )}
         {usage.map((u) => (
           <div key={u.providerName}>
             <div className="flex items-baseline justify-between text-xs">
@@ -102,6 +111,9 @@ export function ProviderBar({ providers }: { providers: string[] }) {
       <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-neutral-500">
         Connected APIs
       </span>
+      {providers.length === 0 && (
+        <span className="text-xs text-neutral-600">No APIs connected yet</span>
+      )}
       {providers.map((p) => (
         <span
           key={p}
