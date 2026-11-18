@@ -1,0 +1,12 @@
+{
+  "supabaseUrl": "https://YOUR-PROJECT.supabase.co",
+  "serviceRoleKey": "PUT-YOUR-SERVICE-ROLE-KEY-HERE (never share this, never commit it)",
+  "userId": "YOUR-SUPABASE-USER-ID",
+  "keyEncryptionSecret": "same value as KEY_ENCRYPTION_SECRET on the server, used to decrypt your provider keys",
+  "intervalSeconds": 60,
+  "watchProjects": [
+    { "name": "Water Refilling", "path": "C:\\path\\to\\project" }
+  ],
+  "memoryDir": "C:\\path\\to\\project\\memory",
+  "statusFile": "C:\\path\\to\\office-status.json"
+}

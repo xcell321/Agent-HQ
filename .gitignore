@@ -42,3 +42,6 @@ next-env.d.ts
 # reviewer-harness
 *.bak.*
 .reviewer-harness/graph/
+
+# playwright-cli session artifacts
+.playwright-cli/
